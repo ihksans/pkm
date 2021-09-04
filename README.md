@@ -2,6 +2,10 @@
 
 ## Available Scripts
 
+#Note
+Before you run this project. you have to install dependencies and check your environment.
+Frist step is install node modules package using cmd and run "npm install".
+
 In the project directory, you can run:
 
 ### `npm start`
