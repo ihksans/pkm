@@ -2,9 +2,9 @@
 
 ## Available Scripts
 
-#Note
+##Note
 Before you run this project. you have to install dependencies and check your environment.
-Frist step is install node modules package using cmd and run "npm install".
+Frist step is update/install `node modules` package using cmd with run this command "npm install".
 
 In the project directory, you can run:
 
