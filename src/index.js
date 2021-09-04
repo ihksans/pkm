@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import './index.css'
+
+import ReactDOM from 'react-dom'
+import Application from './Application'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers'
+import { addTokenByID } from './actions'
+import { persistor, store } from './store'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider as AuthContext } from './context/AuthContext'
+// const store = createStore(rootReducer);
+// console.log('store.getState()', store.getState());
+//  store.subscribe(()=>console.log('store', store.getState()));
+// store.dispatch(addTokenByID('xxxxxx'));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <AuthContext>
+        <Application />
+      </AuthContext>
+    </PersistGate>
+  </Provider>,
+  document.getElementById('root'),
+)
