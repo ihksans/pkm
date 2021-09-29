@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 //Ini buat dependecies/library nya
 //import + "nama variabel" + from + "nama librarynya";
-import TabelDisposisi from '../../components/TabelDisposisi/TabelDisposisi'
-import PdfReader from '../../components/PdfReader'
-import { connect } from 'react-redux'
+import TabelDisposisi from "../../components/TabelDisposisi/TabelDisposisi";
+import PdfReader from "../../components/PdfReader";
+import { connect } from "react-redux";
 import {
   setAllDisposisi,
   setAllSuratMasuk,
@@ -12,83 +12,83 @@ import {
   setDerajatSurat,
   setSifatSurat,
   setAllPencatatan,
-} from '../../actions/index'
+} from "../../actions/index";
 // import Index from '../../components/Disposisi/index'
-import api from '../../service/api'
-import AddFormDisposisi from '../../components/AddFormDisposisi/index'
+import api from "../../service/api";
+import AddFormDisposisi from "../../components/AddFormDisposisi/index";
 class Disposisi extends Component {
   //deklarasi variabel
   constructor(props) {
-    super()
+    super();
     this.state = {
       Disposisi: [],
       suratMasuk: [],
       jenisSurat: [],
       unitKerja: [],
       pencatatan: [],
-    }
-    this.getDisposisi = this.getDisposisi.bind(this)
+    };
+    this.getDisposisi = this.getDisposisi.bind(this);
   }
 
   async getDisposisi() {
     // async getDisposisi(id) {
     await api()
-      .get('api/allInfoDisposisi')
+      .get("api/allInfoDisposisi")
       // .get('api/allInfoDisposisi' +1)
       .then((response) => {
         this.setState({
           Disposisi: response.data.content,
-        })
-        this.props.setAllDisposisi(response.data)
-      })
+        });
+        this.props.setAllDisposisi(response.data);
+      });
     // await api()
     //   .get('api/')
     await api()
-      .get('api/getAllSuratMasuk')
+      .get("api/getAllSuratMasuk")
       .then((response) => {
         this.setState({
           suratMasuk: response.data.content,
-        })
-        this.props.setAllSuratMasuk(response.data.content)
-      })
+        });
+        this.props.setAllSuratMasuk(response.data.content);
+      });
     await api()
-      .get('api/getAllJenisSurat')
+      .get("api/getAllJenisSurat")
       .then((response) => {
         this.setState({
           jenisSurat: response.data,
-        })
-        this.props.setJenisSurat(response.data)
-      })
+        });
+        this.props.setJenisSurat(response.data);
+      });
     await api()
-      .get('api/getAllKodeUnit')
+      .get("api/getAllKodeUnit")
       .then((response) => {
         this.setState({
           unitKerja: response.data,
-        })
-        this.props.setUnitKerja(response.data)
-      })
+        });
+        this.props.setUnitKerja(response.data);
+      });
     await api()
-      .get('api/getAllDerajatSurat')
+      .get("api/getAllDerajatSurat")
       .then((response) => {
-        this.props.setDerajatSurat(response.data)
-      })
+        this.props.setDerajatSurat(response.data);
+      });
     await api()
-      .get('api/getAllSifatNaskah')
+      .get("api/getAllSifatNaskah")
       .then((response) => {
-        this.props.setSifatSurat(response.data)
-      })
+        this.props.setSifatSurat(response.data);
+      });
     await api()
-      .get('api/getAllPencatatanInfo')
+      .get("api/getAllPencatatanInfo")
       .then((response) => {
-        this.state({
+        this.setState({
           pencatatan: response.data,
-        })
-        this.props.setAllPencatatan(response.data.content)
-      })
+        });
+        this.props.setAllPencatatan(response.data.content);
+      });
   }
 
   componentDidMount() {
-    this.getDisposisi()
+    this.getDisposisi();
   }
   render() {
     return (
@@ -130,11 +130,11 @@ class Disposisi extends Component {
           </div>
         </div>
       </>
-    )
+    );
   }
 }
 function mapStateToProps(state) {
-  return state
+  return state;
 }
 export default connect(mapStateToProps, {
   setAllDisposisi,
@@ -144,4 +144,4 @@ export default connect(mapStateToProps, {
   setDerajatSurat,
   setSifatSurat,
   setAllPencatatan,
-})(Disposisi)
+})(Disposisi);

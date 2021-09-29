@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {} from '../../actions'
-import HeaderTabel from './HeaderTabel'
-import BoxDataTabel from './BoxDataTabel'
+import React, { Component, useState } from "react";
+import { connect } from "react-redux";
+import {} from "../../actions";
+import HeaderTabel from "./HeaderTabel";
+import BoxDataTabel from "./BoxDataTabel";
+import ReactPaginate from "react-paginate";
 
 const TabelDisposisi = ({
   Disposisi,
@@ -12,6 +13,14 @@ const TabelDisposisi = ({
   JenisDisposisi,
   Pencatatan,
 }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const perPage = 10;
+  const maxPage = 0;
+  const handlePageClick = (event) => {
+    const currentPage = event.selected + 1;
+    setCurrentPage({ currentPage });
+  };
+
   return (
     <>
       <ul>
@@ -29,14 +38,30 @@ const TabelDisposisi = ({
                     SuratMasuk={SuratMasuk}
                   />
                 </li>
-              )
+              );
             })}
           </>
         )}
       </ul>
+      <nav>
+        <ReactPaginate
+          previousLabel={"Prev"}
+          previousLinkClassName={"page-link"}
+          nextLabel={"Next"}
+          nextLinkClassName={"page-link"}
+          pageCount={maxPage}
+          containerClassName={"pagination justify-content-end mt-4"}
+          pageClassName={"page-item"}
+          breakClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
+          onPageChange={(event) => handlePageClick(event)}
+        />
+      </nav>
     </>
-  )
-}
+  );
+};
 // class TabelDisposisi extends Component{
 //   constructor(props){
 //     super(props)
@@ -85,4 +110,4 @@ const TabelDisposisi = ({
 //     )
 //   }
 // }
-export default TabelDisposisi
+export default TabelDisposisi;
