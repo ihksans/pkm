@@ -4,7 +4,7 @@ import ModalLoading from '../ModalLoading'
 export default function UnduhFile({ link, namaFile, title }) {
   const [showModal, setShowModal] = React.useState(false)
   const [showLoading, setLoading] = React.useState(false)
-
+  const [donwoloadLink, setDownloadLink] = React.useState(false)
   const downloadFile = async () => {
     setLoading(true)
     let formData = new FormData()
@@ -13,6 +13,7 @@ export default function UnduhFile({ link, namaFile, title }) {
     await api()
       .post('/api/donwloadFile', formData)
       .then((response) => {
+        setDownloadLink(response.data.url)
         setLoading(false)
         setShowModal(true)
       })
@@ -93,8 +94,8 @@ export default function UnduhFile({ link, namaFile, title }) {
                   </div>
                   <div className="flex items-center justify-center content-center">
                     <a
-                      href={'/' + link + '.pdf'}
-                      download={link + '.pdf'}
+                      href={donwoloadLink}
+                      download={donwoloadLink}
                       type="submit"
                       className="rounded  bg-danger text-putih background-transparent font-bold w-36 px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all"
                       onClick={() => setShowModal(false)}
