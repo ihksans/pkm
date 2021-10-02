@@ -99,19 +99,19 @@ class TabelSuratKeluar extends Component {
           <HeaderTabel />
           {dataSuratKeluar == null ? null : dataSuratKeluar}
         </ul>
-        <nav>
+        <nav className="mt-4">
           <ReactPaginate
             previousLabel={"Prev"}
-            previousLinkClassName={"page-link"}
+            previousLinkClassName={"relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"}
             nextLabel={"Next"}
-            nextLinkClassName={"page-link"}
+            nextLinkClassName={"-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"}
             pageCount={maxPage}
-            containerClassName={"pagination justify-content-end mt-4"}
-            pageClassName={"page-item"}
-            breakClassName={"page-item"}
+            containerClassName={"relative z-0 inline-flex shadow-sm -space-x-px"}
+            pageClassName={"bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"}
+            breakClassName={"relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700"}
             pageLinkClassName={"page-link"}
             breakLinkClassName={"page-link"}
-            activeClassName={"active"}
+            activeClassName={"-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"}
             onPageChange={(event) => this.handlePageClick(event)}
           />
         </nav>
