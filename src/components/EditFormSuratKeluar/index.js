@@ -992,7 +992,7 @@ class EditFormSurat extends Component {
                 if (this.state.surat == null && this.state.lampiran == null) {
                   this.handleLoading()
                   this.handleModal()
-                  window.location.reload('/#/SuratMasuk')
+                  //     window.location.reload('/#/SuratMasuk')
                 }
               })
           }
@@ -1007,7 +1007,7 @@ class EditFormSurat extends Component {
               if (this.state.lampiran == null) {
                 this.handleLoading()
                 this.handleModal()
-                window.location.reload('/#/SuratMasuk')
+                //   window.location.reload('/#/SuratKeluar')
               }
             })
         }
@@ -1022,13 +1022,13 @@ class EditFormSurat extends Component {
               //jika dari BE error
               this.handleLoading()
               this.handleModal()
-              window.location.reload('/#/SuratMasuk')
             })
         }
       }
     } else {
       this.handleModal()
     }
+    //window.location.reload('/#/SuratKeluar')
   }
 
   render() {

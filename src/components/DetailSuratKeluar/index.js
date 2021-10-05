@@ -6,12 +6,10 @@ import PdfReader from '../PdfReader'
 import ModalKonfirmDeleteSK from '../ModalKonfirmDeleteSK.js'
 import EditFormSuratKeluar from '../EditFormSuratKeluar'
 import ModalLoading from '../ModalLoading'
-
 import UpdateReminder from '../FormUpdateReminder'
 import UpdateTindakLanjut from '../FormUpdateReminder/updateTL'
 import AddReminder from '../FormAddReminder'
 import moment from 'moment'
-
 import Modal from '../AddFormDisposisiKeluar/modal.js'
 class DetailSuratKeluar extends Component {
   constructor(props) {
@@ -232,6 +230,10 @@ class DetailSuratKeluar extends Component {
                           NomorSurat={this.props.SuratDetail.NOMOR_SURAT}
                           IdSurat={this.props.SuratDetail.ID_PENCATATAN}
                           IdNomor={this.props.SuratDetail.ID_NOMOR_SURAT}
+                          NamaSurat={this.props.SuratDetail.NAMA_FILE_SURAT}
+                          NamaLampiran={
+                            this.props.SuratDetail.NAMA_FILE_LAMPIRAN
+                          }
                         />
                       </div>
                       <div className="font-bold">Dicatat oleh </div>

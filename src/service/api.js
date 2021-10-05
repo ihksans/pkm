@@ -9,15 +9,12 @@ export default function api() {
     const token = Cookies.get('cake')
     const api = axios.create({
       baseURL: 'http://127.0.0.1:8000/',
-      withCredentials: false,
       headers: { Authorization: 'Bearer ' + token },
     })
     return api
   } else {
     const api = axios.create({
       baseURL: 'http://127.0.0.1:8000/',
-      withCredentials: false,
-      crossdomain: true,
     })
     return api
   }

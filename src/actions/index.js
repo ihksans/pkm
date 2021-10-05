@@ -1,5 +1,4 @@
 //List of type variabel
-import React from 'react'
 export const ADD_AUTHTOKEN = 'ADD_TOKEN'
 export const DEL_AUTHTOKEN = 'DEL_TOKEN'
 export const SET_USER = 'SET_USER'
@@ -205,6 +204,7 @@ export function setAllPencatatan(payload) {
     type: SET_ALL_PENCATATAN,
     payload,
   }
+  return action
 }
 export function unsetAllPencatatan(payload) {
   const action = {
@@ -234,7 +234,7 @@ export function setAllKodeHal(payload) {
   }
   return action
 }
-export function unsetAllKodeHal(payload) {
+export function unsetAllKodeHal() {
   const action = {
     type: UNSET_KODE_HAL,
   }
@@ -247,7 +247,7 @@ export function setAllPemohon(payload) {
   }
   return action
 }
-export function unsetAllPemohon(payload) {
+export function unsetAllPemohon() {
   const action = {
     type: UNSET_PEMOHON,
   }
