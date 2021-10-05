@@ -9,11 +9,9 @@ import {
   setDerajatSurat,
   setSifatSurat,
   setAllPengingat,
-  setAllDisposisi
+  setAllDisposisi,
 } from '../../actions'
-
-//Ini buat dependecies/library nya
-//import + "nama variabel" + from + "nama librarynya";
+import ModalLoading from '../../components/ModalLoading'
 import api from '../../service/api'
 import TabelSuratMasuk from '../../components/TabelSuratMasuk/TabelSuratMasuk'
 
@@ -26,10 +24,18 @@ class SuratMasuk extends Component {
       jenisSurat: [],
       unitKerja: [],
       disposisi: [],
+      modalLoading: false,
     }
+    this.handleLoading = this.handleLoading.bind(this)
     this.getSuratMasuk = this.getSuratMasuk.bind(this)
   }
+  handleLoading() {
+    this.setState({
+      modalLoading: !this.state.modalLoading,
+    })
+  }
   async getSuratMasuk() {
+    this.handleLoading()
     await api()
       .get('api/detailSuratMasuk')
       .then((response) => {
@@ -71,12 +77,13 @@ class SuratMasuk extends Component {
       })
     await api()
       .get('api/allInfoDisposisi')
-      .then((response)=>{
+      .then((response) => {
         this.setState({
           disposisi: response.data,
         })
         this.props.setAllDisposisi(response.data)
       })
+    this.handleLoading()
   }
   componentDidMount() {
     this.getSuratMasuk()
@@ -123,6 +130,10 @@ class SuratMasuk extends Component {
             </div>
           </div>
         </div>
+        <ModalLoading
+          loading={this.state.modalLoading}
+          title={'Menggambil data sistem'}
+        />
       </>
     )
   }
@@ -137,5 +148,5 @@ export default connect(mapStateToProps, {
   setDerajatSurat,
   setSifatSurat,
   setAllPengingat,
-  setAllDisposisi
+  setAllDisposisi,
 })(SuratMasuk)

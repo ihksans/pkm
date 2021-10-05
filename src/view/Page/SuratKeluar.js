@@ -15,8 +15,9 @@ import {
 } from '../../actions'
 import api from '../../service/api'
 import TabelSuratKeluar from '../../components/TabelSuratKeluar/TabelSuratKeluar'
-import AddFormSuratKeluar from '../../components/AddFormSuratKeluar'
 import GenerateNoSurat from '../../components/GenerateNoSurat'
+import ModalLoading from '../../components/ModalLoading'
+
 class SuratKeluar extends Component {
   //deklarasi variabel
   constructor(props) {
@@ -25,12 +26,21 @@ class SuratKeluar extends Component {
       suratKeluar: [],
       jenisSurat: [],
       unitKerja: [],
-      disposisi:[],
+      disposisi: [],
       lastNoAgenda: null,
+      modalLoading: false,
     }
     this.getSuratKeluar = this.getSuratKeluar.bind(this)
+    this.handleLoading = this.handleLoading.bind(this)
+  }
+  handleLoading() {
+    this.setState({
+      modalLoading: !this.state.modalLoading,
+    })
   }
   async getSuratKeluar() {
+    this.handleLoading()
+
     await api()
       .get('api/getSuratKeluarDetail')
       .then((response) => {
@@ -82,12 +92,14 @@ class SuratKeluar extends Component {
       })
     await api()
       .get('api/allInfoDisposisi')
-      .then((response)=>{
+      .then((response) => {
         this.setState({
           disposisi: response.data,
         })
         this.props.setAllDisposisi(response.data)
       })
+    this.handleLoading()
+
     return (
       <TabelSuratKeluar
         SuratKeluar={this.props.SuratKeluar.allSuratKeluarInfo}
@@ -145,6 +157,10 @@ class SuratKeluar extends Component {
             </div>
           </div>
         </div>
+        <ModalLoading
+          loading={this.state.modalLoading}
+          title={'Menggambil data sistem'}
+        />
       </>
     )
   }
@@ -161,5 +177,5 @@ export default connect(mapStateToProps, {
   setAllPengingat,
   setAllKodeHal,
   setAllPemohon,
-  setAllDisposisi
+  setAllDisposisi,
 })(SuratKeluar)

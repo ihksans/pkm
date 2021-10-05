@@ -4,7 +4,6 @@ import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
 import Kalender from '../AddFormSurat/Kalender'
 import ModalLoading from '../ModalLoading'
-
 // import DetailDisposisi from '../DetailDisposisi'
 
 class EditFormDisposisiKeluar extends Component {
@@ -269,7 +268,6 @@ class EditFormDisposisiKeluar extends Component {
             // })
             this.handleLoading()
             this.handleModal()
-            window.location.reload('/#/Disposisi')
           })
           .catch((err) => {
             console.log(err)
@@ -285,7 +283,6 @@ class EditFormDisposisiKeluar extends Component {
               // if(this.state.lampiran == null){
               this.handleLoading()
               this.handleModal()
-              window.location.reload('/#/Disposisi')
               // }
             })
         }
@@ -295,6 +292,7 @@ class EditFormDisposisiKeluar extends Component {
     } else {
       console.log('error form')
       this.handleModal()
+      window.location.reload('/#/Disposisi')
     }
   }
   render() {

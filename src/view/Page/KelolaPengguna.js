@@ -7,23 +7,33 @@ import { connect } from 'react-redux'
 import { setAllUser } from '../../actions'
 import api from '../../service/api'
 import ModalAddPengguna from '../../components/ModalAddPengguna'
+import ModalLoading from '../../components/ModalLoading'
+
 class KelolaPengguna extends Component {
   //deklarasi variabel
   constructor(props) {
     super()
     this.state = {
       Pengguna: [],
+      modalLoading: false,
     }
     this.getPengguna = this.getPengguna.bind(this)
-
+    this.handleLoading = this.handleLoading.bind(this)
+  }
+  handleLoading() {
+    this.setState({
+      modalLoading: !this.state.modalLoading,
+    })
   }
   async getPengguna() {
+    this.handleLoading()
     await api()
       .get('api/allPenggunaInfo')
       .then((response) => {
         this.props.setAllUser(response.data)
         console.log('pengguna:' + this.props.AllUser.allUserInfo)
       })
+    this.handleLoading()
   }
 
   componentDidMount() {
@@ -55,6 +65,10 @@ class KelolaPengguna extends Component {
             </div>
           </div>
         </div>
+        <ModalLoading
+          loading={this.state.modalLoading}
+          title={'Menggambil data sistem'}
+        />
       </>
     )
   }

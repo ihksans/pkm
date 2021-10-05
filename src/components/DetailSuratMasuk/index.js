@@ -240,6 +240,10 @@ class DetailSuratMasuk extends Component {
                         <ModalKonfirmDeleteSM
                           NomorSurat={this.props.SuratDetail.NOMOR_SURAT}
                           IdSurat={this.props.SuratDetail.ID_PENCATATAN}
+                          NamaSurat={this.props.SuratDetail.NAMA_FILE_SURAT}
+                          NamaLampiran={
+                            this.props.SuratDetail.NAMA_FILE_LAMPIRAN
+                          }
                         />
                       </div>
                       <div className="font-bold">Dicatat oleh </div>

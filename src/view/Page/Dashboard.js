@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import api from '../../service/api'
 import BoxDataBeranda from '../../components/BoxDataBeranda'
 import BoxUserIntro from '../../components/BoxUserIntro'
+import ModalLoading from '../../components/ModalLoading'
 class Dashboard extends Component {
   //deklarasi variabel
   constructor(props) {
@@ -14,10 +15,19 @@ class Dashboard extends Component {
       countSM: 0,
       countSK: 0,
       countDis: 0,
+      modalLoading: false,
     }
     this.getCount = this.getCount.bind(this)
+    this.handleLoading = this.handleLoading.bind(this)
+  }
+  handleLoading() {
+    this.setState({
+      modalLoading: !this.state.modalLoading,
+    })
   }
   async getCount() {
+    this.handleLoading()
+
     await api()
       .get('api/getCountSK')
       .then((response) => {
@@ -53,6 +63,7 @@ class Dashboard extends Component {
           countUser: response.data.content,
         })
       })
+    this.handleLoading()
   }
 
   componentDidMount() {
@@ -90,6 +101,10 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
+        <ModalLoading
+          loading={this.state.modalLoading}
+          title={'Menggambil data sistem'}
+        />
       </>
     )
   }
