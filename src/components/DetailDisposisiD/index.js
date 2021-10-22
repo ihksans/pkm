@@ -12,7 +12,7 @@ class DetailDisposisiD extends Component {
     super(props)
     this.state = {
       dir: [],
-      tujuanDisposisi:[],
+      tujuanDisposisi: [],
       url: null,
       loading: false,
       disposisi: null,
@@ -63,7 +63,8 @@ class DetailDisposisiD extends Component {
     let formData = new FormData()
     formData.append(
       'namafile',
-      this.props.DisposisiDetail.NOMOR_SURAT.split('/').join('_') + '_disposisi',
+      this.props.DisposisiDetail.NOMOR_SURAT.split('/').join('_') +
+        '_disposisi',
     )
     await api()
       .post('/api/getSurat', formData)
@@ -123,15 +124,19 @@ class DetailDisposisiD extends Component {
                       </div>
                       <div className="flex flex-row col-span-3 mb-4 mb-10">
                         <EditFormDisposisiD
-                        DisposisiDetail={this.props.DisposisiDetail}
-                        IdJenisSurat={this.props.IdJenisSurat}
-                        IdUnitKerja={this.props.IdUnitKerja}
-                        SuratMasuk={this.props.SuratMasuk}
+                          DisposisiDetail={this.props.DisposisiDetail}
+                          IdJenisSurat={this.props.IdJenisSurat}
+                          IdUnitKerja={this.props.IdUnitKerja}
+                          SuratMasuk={this.props.SuratMasuk}
                         />
-                        <ModalKonfirmDeleteDispo
-                          IdDispo={this.props.DisposisiDetail.ID_DISPOSISI}
-                          handleDisposisi={() => this.handleDelete()}
-                        />
+                        {this.props.User.currentUser.ROLE == 3 ? null : (
+                          <>
+                            <ModalKonfirmDeleteDispo
+                              IdDispo={this.props.DisposisiDetail.ID_DISPOSISI}
+                              handleDisposisi={() => this.handleDelete()}
+                            />
+                          </>
+                        )}
                       </div>
 
                       <div className="font-bold">No. Agenda Disposisi</div>
@@ -232,8 +237,9 @@ class DetailDisposisiD extends Component {
                               <PdfReader
                                 urlFile={this.state.url}
                                 namaFile={
-                                  this.props.DisposisiDetail.NOMOR_SURAT.split('/').join('_') +
-                                  '_disposisi'
+                                  this.props.DisposisiDetail.NOMOR_SURAT.split(
+                                    '/',
+                                  ).join('_') + '_disposisi'
                                 }
                               />
                             </>

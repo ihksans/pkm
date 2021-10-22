@@ -288,7 +288,9 @@ class GenerateNoSurat extends Component {
         <button
           className="flex flex-row bg-primary p-2 mt-4 hover:bg-orenHover focus:outline-none"
           type="button"
-          onClick={this.handleShowModal}
+          onClick={
+            this.props.User.currentUser.ROLE == 3 ? null : this.handleShowModal
+          }
         >
           <div className="ml-1">
             <img

@@ -34,7 +34,8 @@ class DetailDisposisi extends Component {
     let formData = new FormData()
     formData.append(
       'namafile',
-      this.props.DisposisiDetail.NOMOR_SURAT.split('/').join('_') + '_disposisi',
+      this.props.DisposisiDetail.NOMOR_SURAT.split('/').join('_') +
+        '_disposisi',
     )
     await api()
       .post('/api/getSurat', formData)
@@ -54,7 +55,7 @@ class DetailDisposisi extends Component {
     })
     // console.log('detail disposisi: ' + this.props.DisposisiDetail)
     // console.log('surate detail: '+ this.props.SuratDetail)
-    // console.log('detail disposisi: '+ this.props.DisposisiDetail) 
+    // console.log('detail disposisi: '+ this.props.DisposisiDetail)
     // console.log('tujuan surat: '+ this.props.TujuanSurat)
     // console.log('ID pencatatan: '+ this.props.IdPencatatan)
     // console.log('Jenis surat: '+ this.props.IdJenisSurat)
@@ -63,23 +64,23 @@ class DetailDisposisi extends Component {
     // console.log('nomor surat masuk: '+ this.props.NomorSurat)
     // console.log('id surat masuk: '+ this.props.SuratMasuk)
     // console.log('pencatatan: '+ this.props.Pencatatan)
-    console.log('surat detail '+this.props.SuratDetail)
-    console.log('detail disposisi '+this.props.DisposisiDetail)
-    console.log('tujuan surat '+this.props.TujuanSurat)
-    console.log('IdPencatatan '+this.props.IdPencatatan)
-    console.log('IdJenisSurat '+this.props.IdJenisSurat)
-    console.log('SuratMasuk '+this.props.SuratMasuk)
-    console.log('IdUnitKerja '+this.props.IdUnitKerja)
-    console.log('UnitKerja '+this.props.UnitKerja)
-    console.log('NomorSurat '+this.props.NomorSurat)
-    console.log('Pencatatan '+this.props.Pencatatan)
+    console.log('surat detail ' + this.props.SuratDetail)
+    console.log('detail disposisi ' + this.props.DisposisiDetail)
+    console.log('tujuan surat ' + this.props.TujuanSurat)
+    console.log('IdPencatatan ' + this.props.IdPencatatan)
+    console.log('IdJenisSurat ' + this.props.IdJenisSurat)
+    console.log('SuratMasuk ' + this.props.SuratMasuk)
+    console.log('IdUnitKerja ' + this.props.IdUnitKerja)
+    console.log('UnitKerja ' + this.props.UnitKerja)
+    console.log('NomorSurat ' + this.props.NomorSurat)
+    console.log('Pencatatan ' + this.props.Pencatatan)
 
-    console.log('namaFile '+this.props.namaFile)
-    console.log('namaLampiran '+this.props.namaLampiran)
-    console.log('jenisSurat '+this.props.jenisSurat)
-    console.log('disposisi '+this.props.disposisi)
-    console.log('pengingatS '+this.props.pengingatS)
-    console.log('countDays '+this.props.countDays)
+    console.log('namaFile ' + this.props.namaFile)
+    console.log('namaLampiran ' + this.props.namaLampiran)
+    console.log('jenisSurat ' + this.props.jenisSurat)
+    console.log('disposisi ' + this.props.disposisi)
+    console.log('pengingatS ' + this.props.pengingatS)
+    console.log('countDays ' + this.props.countDays)
   }
   handleDelete() {
     window.location.reload('/#/Disposisi')
@@ -120,34 +121,36 @@ class DetailDisposisi extends Component {
                         </div>
                       </div>
                       <div className="flex flex-row col-span-3 mb-4 mb-10">
-                        <EditFormDisposisi 
-                        SuratDetail={this.props.SuratDetail}
-                        DisposisiDetail={this.props.DisposisiDetail}
-                        // DisposisiDetail={this.props.Disposisi}
-                        TujuanSurat={this.props.TujuanSurat}
-                        IdPencatatan={this.props.IdPencatatan}
-                        IdJenisSurat={this.props.IdJenisSurat}
-                        SuratMasuk={this.props.SuratMasuk}
-                        IdUnitKerja={this.props.IdUnitKerja}
-                        UnitKerja={this.props.UnitKerja}
-                        NomorSurat={this.props.NomorSurat}
-                        Pencatatan={this.props.Pencatatan}
-                                                
-                        namaFile={this.props.NamaFileSurat}
-                        // SuratDetail={this.props.SuratDetail}
-                        namaLampiran={this.props.NamaFileLampiran}
-                        jenisSurat={this.props.jenisSurat}
-                        // IdUnitKerja={this.props.IdUnitKerja}
-                        disposisi={this.state.disposisi}
-                        pengingatS={this.props.pengingatS}
-                        countDays={this.props.countDays}
-                        // DisposisiDetail={this.props.DisposisiDetail}
+                        <EditFormDisposisi
+                          SuratDetail={this.props.SuratDetail}
+                          DisposisiDetail={this.props.DisposisiDetail}
+                          // DisposisiDetail={this.props.Disposisi}
+                          TujuanSurat={this.props.TujuanSurat}
+                          IdPencatatan={this.props.IdPencatatan}
+                          IdJenisSurat={this.props.IdJenisSurat}
+                          SuratMasuk={this.props.SuratMasuk}
+                          IdUnitKerja={this.props.IdUnitKerja}
+                          UnitKerja={this.props.UnitKerja}
+                          NomorSurat={this.props.NomorSurat}
+                          Pencatatan={this.props.Pencatatan}
+                          namaFile={this.props.NamaFileSurat}
+                          // SuratDetail={this.props.SuratDetail}
+                          namaLampiran={this.props.NamaFileLampiran}
+                          jenisSurat={this.props.jenisSurat}
+                          // IdUnitKerja={this.props.IdUnitKerja}
+                          disposisi={this.state.disposisi}
+                          pengingatS={this.props.pengingatS}
+                          countDays={this.props.countDays}
+                          // DisposisiDetail={this.props.DisposisiDetail}
                         />
-
-                        <ModalKonfirmDeleteDispo
-                          IdDispo={this.props.DisposisiDetail.ID_DISPOSISI}
-                          // handleDisposisi={() => this.handleDelete()}
-                        />
+                        {this.props.User.currentUser.ROLE == 3 ? null : (
+                          <>
+                            <ModalKonfirmDeleteDispo
+                              IdDispo={this.props.DisposisiDetail.ID_DISPOSISI}
+                              // handleDisposisi={() => this.handleDelete()}
+                            />
+                          </>
+                        )}
                       </div>
 
                       <div className="font-bold">No. Agenda Disposisi</div>
@@ -248,8 +251,9 @@ class DetailDisposisi extends Component {
                               <PdfReader
                                 urlFile={this.state.url}
                                 namaFile={
-                                  this.props.DisposisiDetail.NOMOR_SURAT.split('/').join('_') +
-                                  '_disposisi'
+                                  this.props.DisposisiDetail.NOMOR_SURAT.split(
+                                    '/',
+                                  ).join('_') + '_disposisi'
                                 }
                               />
                             </>

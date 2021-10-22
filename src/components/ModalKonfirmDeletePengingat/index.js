@@ -105,7 +105,11 @@ class ModalConfirmDeletePengingat extends Component {
                       <button
                         type="submit"
                         className="rounded bg-danger text-putih background-transparent font-bold w-36 px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all hover:bg-red-700 focus:outline-none"
-                        onClick={this.onDelete}
+                        onClick={
+                          this.props.User.currentUser.ROLE == 3
+                            ? null
+                            : this.onDelete
+                        }
                       >
                         Ya
                       </button>

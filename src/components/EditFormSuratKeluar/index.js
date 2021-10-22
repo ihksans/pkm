@@ -1037,7 +1037,9 @@ class EditFormSurat extends Component {
         <button
           className="flex flex-row bg-primary font-bold items-center ml-2 mt-1  rounded p-2 shadow-sm w-75% hover:bg-orenHover focus:outline-none"
           type="button"
-          onClick={this.handleModal}
+          onClick={
+            this.props.User.currentUser.ROLE == 3 ? null : this.handleModal
+          }
         >
           <div className="ml-1">
             <img

@@ -382,7 +382,11 @@ class AddFormDisposisiKeluar extends Component {
                           <button
                             className="justify-self-center flex flex-row bg-primary p-2 mt-4 hover:bg-orenHover focus:outline-none"
                             type="button"
-                            onClick={this.handleShowForm}
+                            onClick={
+                              this.props.User.currentUser.ROLE != 3
+                                ? this.handleShowForm
+                                : null
+                            }
                           >
                             <div className="ml-1">
                               <img
@@ -997,11 +1001,19 @@ class AddFormDisposisiKeluar extends Component {
                                     inputListSelect={this.state.inputListSelect}
                                     RUnitKerja={this.props.RUnitKerja}
                                   />
-
-                                  <ModalKonfirmDeleteDispo
-                                    IdDispo={this.props.disposisi.ID_DISPOSISI}
-                                    handleDisposisi={() => this.handleModal()}
-                                  />
+                                  {this.props.User.currentUser.ROLE ==
+                                  3 ? null : (
+                                    <>
+                                      <ModalKonfirmDeleteDispo
+                                        IdDispo={
+                                          this.props.disposisi.ID_DISPOSISI
+                                        }
+                                        handleDisposisi={() =>
+                                          this.handleModal()
+                                        }
+                                      />
+                                    </>
+                                  )}
                                 </div>
 
                                 <div className="font-bold">

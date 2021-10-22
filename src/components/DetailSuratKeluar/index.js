@@ -225,16 +225,19 @@ class DetailSuratKeluar extends Component {
                         />
 
                         <ModalLoading loading={this.state.modalLodaing} />
-
-                        <ModalKonfirmDeleteSK
-                          NomorSurat={this.props.SuratDetail.NOMOR_SURAT}
-                          IdSurat={this.props.SuratDetail.ID_PENCATATAN}
-                          IdNomor={this.props.SuratDetail.ID_NOMOR_SURAT}
-                          NamaSurat={this.props.SuratDetail.NAMA_FILE_SURAT}
-                          NamaLampiran={
-                            this.props.SuratDetail.NAMA_FILE_LAMPIRAN
-                          }
-                        />
+                        {this.props.User.currentUser.ROLE == 3 ? null : (
+                          <>
+                            <ModalKonfirmDeleteSK
+                              NomorSurat={this.props.SuratDetail.NOMOR_SURAT}
+                              IdSurat={this.props.SuratDetail.ID_PENCATATAN}
+                              IdNomor={this.props.SuratDetail.ID_NOMOR_SURAT}
+                              NamaSurat={this.props.SuratDetail.NAMA_FILE_SURAT}
+                              NamaLampiran={
+                                this.props.SuratDetail.NAMA_FILE_LAMPIRAN
+                              }
+                            />
+                          </>
+                        )}
                       </div>
                       <div className="font-bold">Dicatat oleh </div>
 

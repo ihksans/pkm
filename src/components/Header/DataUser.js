@@ -16,7 +16,14 @@ class DataUser extends Component {
           <p className="font-semibold text-right text-xs">
             {this.props.User.currentUser.ROLE == 1
             ? 'ADMINISTRATOR'
-            : 'STAF PENGGUNA'}</p>
+            : null }
+             {this.props.User.currentUser.ROLE == 2
+            ? 'STAF PENGGUNA'
+            : null }
+             {this.props.User.currentUser.ROLE == 3
+            ? 'WAKIL DIREKTUR 3'
+            : null }</p>
+            
         </div>
         {/* <div className="text-sm font-semibold text-right text-xs">
           {this.props.User.currentUser.ROLE == 1
